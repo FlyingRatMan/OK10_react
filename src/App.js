@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {useState, useEffect} from "react";
+import Users from "./components/users/Users";
+import UserDetails from "./components/users/UserDetails";
+import Posts from "./components/posts/Posts";
+import {getUsers, getPosts} from "./services/users.services";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        getUsers()
+            .then(value => setUsers(value.data))
+    }, [])
+
+    return (
+        <div className="flex">
+            <Users users={users} onDetailsClick={(user) => {
+                setSelectedUser(user);
+                setPosts([]);
+            }}/>
+            <div className="flex-in">
+                <UserDetails selectedUser={selectedUser} onPostsClick={() => {
+                    getPosts(selectedUser.id)
+                        .then(posts => setPosts(posts.data))
+                }}/>
+                <Posts posts={posts}/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
