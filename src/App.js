@@ -1,33 +1,42 @@
-import "./App.css";
 import {useState, useEffect} from "react";
+
+import "./App.css";
 import Users from "./components/users/Users";
-import UserDetails from "./components/users/UserDetails";
-import Posts from "./components/posts/Posts";
-import {getUsers, getPosts} from "./services/users.services";
+import Form from "./components/form/Form";
+import {getUsers} from "./services/users.services";
 
 function App() {
     const [users, setUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(null);
-    const [posts, setPosts] = useState([]);
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
     useEffect(() => {
         getUsers()
-            .then(value => setUsers(value.data))
+            .then(value => {
+                setUsers(value.data)
+                setFilteredUsers(value.data)
+            })
     }, [])
 
+    const getFilter = (filter) => {
+        let filtered = [...users];
+
+        if (filter.name) {
+           filtered = filtered.filter(user => user.name.includes(filter.name));
+        }
+        if (filter.username) {
+            filtered = filtered.filter(user => user.username.includes(filter.username));
+        }
+        if (filter.email) {
+            filtered = filtered.filter(user => user.email.includes(filter.email));
+        }
+
+        setFilteredUsers(filtered);
+    }
+
     return (
-        <div className="flex">
-            <Users users={users} onDetailsClick={(user) => {
-                setSelectedUser(user);
-                setPosts([]);
-            }}/>
-            <div className="flex-in">
-                <UserDetails selectedUser={selectedUser} onPostsClick={() => {
-                    getPosts(selectedUser.id)
-                        .then(posts => setPosts(posts.data))
-                }}/>
-                <Posts posts={posts}/>
-            </div>
+        <div>
+            <Form onSetFilter={getFilter}/>
+            <Users users={filteredUsers}/>
         </div>
     );
 }

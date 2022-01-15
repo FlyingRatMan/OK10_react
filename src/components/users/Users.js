@@ -1,8 +1,7 @@
-const Users = ({users, onDetailsClick}) => {
+const Users = ({users}) => {
     return <div>
         {users.map(user => <div key={user.id}>
-            <h2>{user.id} - {user.name}</h2>
-            <button onClick={() => onDetailsClick(user)}>Get details</button>
+            <h2>{user.name} - {user.username} - {user.email}</h2>
         </div>)}
     </div>
 }
