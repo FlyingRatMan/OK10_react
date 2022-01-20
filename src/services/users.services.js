@@ -4,16 +4,24 @@ let url = axios.create({
     baseURL: "https://jsonplaceholder.typicode.com/",
 });
 
-const getUsers = () => {
-    return url.get("/users");
+export const userService = {
+    getAll: () => url.get("/users").then(users => users.data),
+    getById: (id) => url.get("/users/" + id).then(user => user.data),
 };
 
-const getUserId = (id) => {
-    return url.get("/users/" + id);
+export const postService = {
+    getAll: () => url.get("/posts").then(posts => posts.data),
+    getUserPosts: (id) => url.get("/users/" + id + "/posts").then(posts => posts.data),
 };
 
-const getPosts = (id) => {
-    return url.get("/users/" + id + "/posts");
-}
+export const commentService = {
+    getPostComments: (id) => url.get("/posts/" + id + "/comments").then(comments => comments.data),
+};
 
-export { getUsers, getUserId, getPosts };
+export const albumService = {
+    getUserAlbums: (id) => url.get("/users/" + id + "/albums/").then(album => album.data),
+};
+
+export const photoService = {
+    getAlbumPhotos: (id) => url.get("/albums/" + id + "/photos/").then(photos => photos.data),
+};

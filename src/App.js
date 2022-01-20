@@ -1,35 +1,26 @@
-import "./App.css";
 import {useState, useEffect} from "react";
-import Users from "./components/users/Users";
-import UserDetails from "./components/users/UserDetails";
-import Posts from "./components/posts/Posts";
-import {getUsers, getPosts} from "./services/users.services";
+import {Routes, Route} from "react-router-dom";
+
+import "./App.css";
+import UsersPage from "./pages/UsersPage";
+import PostsPage from "./pages/PostsPage";
+import Layout from "./components/layout/Layout";
+
 
 function App() {
-    const [users, setUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(null);
-    const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        getUsers()
-            .then(value => setUsers(value.data))
-    }, [])
 
     return (
-        <div className="flex">
-            <Users users={users} onDetailsClick={(user) => {
-                setSelectedUser(user);
-                setPosts([]);
-            }}/>
-            <div className="flex-in">
-                <UserDetails selectedUser={selectedUser} onPostsClick={() => {
-                    getPosts(selectedUser.id)
-                        .then(posts => setPosts(posts.data))
-                }}/>
-                <Posts posts={posts}/>
-            </div>
-        </div>
-    );
+        <>
+            <Routes>
+                <Route path={"/"} element={<Layout/>}>
+                    <Route path={"/users"} element={<UsersPage/>}/>
+                    <Route path={"/posts"} element={<PostsPage/>}/>
+                </Route>
+            </Routes>
+        </>
+
+    )
 }
 
 export default App;
