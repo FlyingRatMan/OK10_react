@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6277127b-609b-4aba-8296-0d3968289e97" name="Changes" comment="" />
+    <list default="true" id="6277127b-609b-4aba-8296-0d3968289e97" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +53,7 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.run">
-    <configuration name="App.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="App.js" working-dir="$PROJECT_DIR$/src">
+    <configuration name="App.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
     <configuration name="run" type="js.build_tools.npm" nameIsGenerated="true">
@@ -58,13 +67,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Node.js.App.js" />
       <item itemvalue="npm.run" />
+      <item itemvalue="Node.js.App.jsx" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.App.js" />
-        <item itemvalue="Node.js.App.js" />
+        <item itemvalue="Node.js.App.jsx" />
+        <item itemvalue="Node.js.App.jsx" />
       </list>
     </recent_temporary>
   </component>
@@ -82,6 +91,7 @@
       <workItem from="1642178286436" duration="307000" />
       <workItem from="1642178608018" duration="544000" />
       <workItem from="1642275448604" duration="454000" />
+      <workItem from="1643294568548" duration="7624000" />
     </task>
     <servers />
   </component>
